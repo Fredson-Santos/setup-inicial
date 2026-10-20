@@ -105,10 +105,10 @@ foreach ($rf in $ruleFiles) {
 Write-Host "`n[5/5] Verificando Git status para commit inicial..." -ForegroundColor Yellow
 if (-not $SkipGitCommit) {
     try {
-        $status = & git -C $TargetDir status --porcelain 2>&1
+        $status = git -C $TargetDir status --porcelain
         if ($status) {
-            $null = & git -C $TargetDir add .gitignore .gitattributes .env.example README.md .agents/ 2>&1
-            $null = & git -C $TargetDir commit -m "chore: setup inicial do projeto com gitignore e regras do agente" 2>&1
+            git -C $TargetDir add .gitignore .gitattributes .env.example README.md .agents/
+            git -C $TargetDir commit -m "chore: setup inicial do projeto com gitignore e regras do agente"
             if ($LASTEXITCODE -eq 0) {
                 Write-Host "  [OK] Commit inicial realizado com sucesso!" -ForegroundColor Green
             } else {
@@ -118,7 +118,7 @@ if (-not $SkipGitCommit) {
             Write-Host "  [INFO] Nenhuma alteracao pendente para commit." -ForegroundColor Gray
         }
     } catch {
-        Write-Host "  [INFO] Git commit ignorado." -ForegroundColor Gray
+        Write-Host "  [AVISO] Nao foi possivel concluir o commit automaticamente: $($_.Exception.Message)" -ForegroundColor DarkYellow
     }
 }
 
