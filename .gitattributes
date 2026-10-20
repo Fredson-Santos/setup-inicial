@@ -1,0 +1,31 @@
+# Configuração padrão de quebras de linha para consistência multi-SO
+* text=auto eol=lf
+
+# Scripts e arquivos específicos de Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Scripts de shell Linux/Unix
+*.sh text eol=lf
+
+# Arquivos Binários (não tentar fazer diff de texto ou alterar quebras de linha)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.svg text
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+*.7z binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
